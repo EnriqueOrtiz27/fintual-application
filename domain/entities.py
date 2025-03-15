@@ -1,13 +1,13 @@
 from pydantic import BaseModel
 
 from domain.enums import (
-    TickerSymbolCode,
+    Ticker,
     RiskToleranceLevel,
 )
 
 
 class StockEntity(BaseModel):
-    symbol: TickerSymbolCode
+    ticker: Ticker
     official_name: str
     display_name: str
 
@@ -21,11 +21,3 @@ class PortfolioEntity(BaseModel):
     description: str
     risk_tolerance: RiskToleranceLevel
     allocations: list[AllocationEntity]
-
-
-class ProfitsPresenter(BaseModel):
-    net_profit: float
-    annualized_return: float
-
-    def __repr__(self):
-        return f"Net Profit: {self.net_profit}, Annualized Return: {self.annualized_return}"

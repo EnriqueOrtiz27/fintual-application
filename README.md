@@ -26,9 +26,9 @@ For simplicity, there are only two stocks, `AAPL` (Apple) and `FNTL` (Fintual - 
 
 I built a simple API with a single endpoint that allows you to compute the profits
 of a portfolio comprised of a combination of these two stocks (for example, 70% AAPL and 30% FNTL)
-between Jan 1st, 2025, and Dec 31st, 2025 (prices are simulated).
+between Jan 1st, 2025, and Dec 31st, 2025.
 
-Prices are read from a csv called `stock_prices.csv`. They're fake, but they look kind of real.
+Prices are read from a csv called `stock_prices.csv`. They're simulated, but they look kind of real.
 
 ![image](images/stock_prices.png)
 
@@ -36,20 +36,42 @@ Prices are read from a csv called `stock_prices.csv`. They're fake, but they loo
 
 ![image](images/how_it_works.png)
 
+### JSON Body Guidelines
+
+The JSON body of your request must fulfill the following criteria:
+
+* `start_date` and `end_date` must be in `YYYY-MM-DD` format
+* `start_date` and `end_date` must be between `2025-01-01` and `2025-12-31`
+    * If `start_date` > `end_date`, we'll switch them up for you.
+* `allocations` is an object that must fulfill the following criteria:
+    * It must have at least one element
+    * The keys must be either `AAPL` or `FNTL`
+    * The weights must be integers (so that you can do QA more easily)
+    * The weights must add to `100`
+
 ## How to test it in more than 10 seconds but less than 10 years
 
 ## Further Improvements
 
 * Don't hardcode the price - look for it in the DB.
 * Add more unit tests
-* add cool price image
 * Add pydantic validators to ensure allocations sum 100
 
 ### Note to Self
 
 * add loom - make it turbo clear
 
-## Bonus Track - How devs are expected to do QA at Palenca
+## Doing QA
 
-You guys included a Bonus track, I want to include one too. 
+Click on the image to see me doing QA of the calculations.
 
+[![My Loom Video](/images/qa.png)](https://www.loom.com/share/4d8b430e053448f2977967d03f740614?sid=94e16037-8f0d-4cf2-a7cb-29206759cdbd)
+
+### Final checklist
+
+* reread instructions, make sure I follow all of them
+* record loom
+* run new env dockerfile
+* add unit tests
+* API -> Deploy GCP
+* 

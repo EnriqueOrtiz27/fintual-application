@@ -86,7 +86,7 @@ This is a graph that represents the csv prices:
 ![image](images/stock_prices.png)
 _As you can see, Apple is still more valuable than Fintual, but Fintual is doing great!_
 
-# Challenges
+## Challenges
 
 This is a test of well I did my job. If it's not clear at all how to solve these questions in less than 10 minutes, I
 need
@@ -94,7 +94,9 @@ to improve.
 
 * Who did better in 2025, Apple or Fintual? (assuming you go from `2025-01-01` to `2025-12-31`)
 * What happens if you send a `start_date` that's greater than the `end_date`?
-* What are the net profits of a portfolio made up of 55% FNTL and 45% AAPL from `2025-03-04` to `2025-10-04`
+* What are the net profits of a portfolio made up of 55% FNTL and 45% AAPL from `2025-03-04` to `2025-10-04`?
+
+(Answers at the end of the README)
 
 # Appendix
 
@@ -124,6 +126,6 @@ is [here](https://github.com/EnriqueOrtiz27/fintual-application/blob/main/infras
 
 ## Answers to the challenges
 
-1. FNTL (91.8 > 7.52)
+1. Fintual (91.8% annualized return > 7.52%)
 2. The code will use the `start_date` as the `end_date` and viceversa
 3. 22.56 (Rounded to 2 numbers)

@@ -25,17 +25,16 @@ We have 3 main entities: `Portfolios`, `Allocations`, and `Stocks`.
 For simplicity, there are only two stocks, `AAPL` (Apple) and `FNTL` (Fintual - too soon?).
 
 I built a simple API with a single endpoint that allows you to compute the profits
-of a portfolio comprised of a combination of these two stocks (for example, 70% AAPL and 30% FNTL, or a 100% FNTL
-#Believe)
-between Jan 1st, 2025, and Dec 31st, 2025 (yes, I can predict the future).
-
-![image](images/how_it_works.png)
+of a portfolio comprised of a combination of these two stocks (for example, 70% AAPL and 30% FNTL)
+between Jan 1st, 2025, and Dec 31st, 2025 (prices are simulated).
 
 Prices are read from a csv called `stock_prices.csv`. They're fake, but they look kind of real.
 
 ![image](images/stock_prices.png)
 
 ## How to test it in 10 seconds
+
+![image](images/how_it_works.png)
 
 ## How to test it in more than 10 seconds but less than 10 years
 

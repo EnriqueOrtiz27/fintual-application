@@ -91,10 +91,6 @@ class Portfolio:
         return round(annualized_return, 2)
 
     def profit(self, start_date: datetime, end_date: datetime) -> ProfitsPresenter:
-        if start_date > end_date:
-            # we can fix this for users, no need to get angry
-            start_date, end_date = end_date, start_date
-
         start_value = self.compute_portfolio_value_at_date(date=start_date)
         end_value = self.compute_portfolio_value_at_date(date=end_date)
         net_profits = round(end_value - start_value, 2)

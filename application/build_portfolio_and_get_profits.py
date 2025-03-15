@@ -10,6 +10,12 @@ from infrastructure.repositories import StockPriceCSVRepository
 class BuildPortfolioAndGetProfits:
     @staticmethod
     def call(params: ComputePortfolioProfitsParams) -> ProfitsPresenter:
+        start_date = params.start_date
+        end_date = params.end_date
+        if start_date > end_date:
+            # we can fix this for users, no need to get angry
+            start_date, end_date = params.end_date, params.start_date
+
         allocations = params.allocations
         portfolio_allocations = []
         for key, value in allocations.items():
@@ -27,14 +33,12 @@ class BuildPortfolioAndGetProfits:
             ),
         )
 
-        portfolio_profits = portfolio.profit(
-            start_date=params.start_date, end_date=params.end_date
-        )
+        portfolio_profits = portfolio.profit(start_date=start_date, end_date=end_date)
 
         return PortfolioResultsPresenter(
             portfolio_id=params.portfolio_id,
-            start_date=params.start_date.strftime("%Y-%m-%d"),
-            end_date=params.end_date.strftime("%Y-%m-%d"),
+            start_date=start_date.strftime("%Y-%m-%d"),
+            end_date=end_date.strftime("%Y-%m-%d"),
             allocations=[
                 {item.stock.ticker.value: item.weight for item in portfolio_allocations}
             ],

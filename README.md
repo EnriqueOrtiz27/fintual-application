@@ -70,4 +70,12 @@ it [here](https://www.loom.com/share/4d8b430e053448f2977967d03f740614?sid=94e160
 In case it helps you do QA more easily. The entire list
 is [here](https://github.com/EnriqueOrtiz27/fintual-application/blob/main/infrastructure/stock_prices.csv).
 
-![image](/images/first_week.png)
+| date       | FNTL  | AAPL   |
+|------------|-------|--------|
+| 2025-01-01 | 70.68 | 200.59 |
+| 2025-01-02 | 69.19 | 201.46 |
+| 2025-01-03 | 67.14 | 199.71 |
+| 2025-01-04 | 70.40 | 200.01 |
+| 2025-01-05 | 68.22 | 199.50 |
+| 2025-01-06 | 69.70 | 199.10 |
+| 2025-01-07 | 67.54 | 197.65 |

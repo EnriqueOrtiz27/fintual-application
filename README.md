@@ -122,7 +122,7 @@ is [here](https://github.com/EnriqueOrtiz27/fintual-application/blob/main/infras
 
 ## Further Improvements
 
-* Define behavior for negative weights (they're allowed now)
+* Define behavior for negative weights (they're allowed now which simulates short sales, but I didn't do QA on this)
 
 ## Answers to the challenges
 

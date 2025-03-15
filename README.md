@@ -98,7 +98,7 @@ to improve.
 
 (Answers at the end of the README)
 
-# Appendix
+## Appendix
 
 ### Doing QA
 
@@ -120,11 +120,11 @@ is [here](https://github.com/EnriqueOrtiz27/fintual-application/blob/main/infras
 | 2025-01-06 | 69.70 | 199.10 |
 | 2025-01-07 | 67.54 | 197.65 |
 
-## Further Improvements
+### Further Improvements
 
 * Define behavior for negative weights (they're allowed now)
 
-## Answers to the challenges
+### Answers to the challenges
 
 1. Fintual (91.8% annualized return > 7.52%)
 2. The code will use the `start_date` as the `end_date` and viceversa

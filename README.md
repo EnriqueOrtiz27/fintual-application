@@ -1,8 +1,3 @@
-* pending how to run
-* pending requirements!
-* review annualized return formula + create unit tests
-    * format with Black
-
 # Introduction
 
 These are the instructions provided by Fintual to apply for
@@ -30,11 +25,12 @@ between Jan 1st, 2025, and Dec 31st, 2025.
 
 Prices are read from a csv called `stock_prices.csv`. They're simulated, but they look kind of real.
 
+The csv can be
+found [here](https://github.com/EnriqueOrtiz27/fintual-application/blob/main/infrastructure/stock_prices.csv).
+
 ![image](images/stock_prices.png)
 
 ## How to test it in 10 seconds
-
-![image](images/how_it_works.png)
 
 ### JSON Body Guidelines
 
@@ -51,27 +47,27 @@ The JSON body of your request must fulfill the following criteria:
 
 ## How to test it in more than 10 seconds but less than 10 years
 
-## Further Improvements
+# Appendix
 
-* Don't hardcode the price - look for it in the DB.
-* Add more unit tests
-* Add pydantic validators to ensure allocations sum 100
+### How this API works
 
-### Note to Self
+![image](images/how_it_works.png)
 
-* add loom - make it turbo clear
+### Doing QA
 
-## Doing QA
-
-Click on the image to see me doing QA of the calculations.
-
-[![My Loom Video](/images/qa.png)](https://www.loom.com/share/4d8b430e053448f2977967d03f740614?sid=94e16037-8f0d-4cf2-a7cb-29206759cdbd)
+I recorded a video of me doing some QA, you can watch
+it [here](https://www.loom.com/share/4d8b430e053448f2977967d03f740614?sid=94e16037-8f0d-4cf2-a7cb-29206759cdbd).
 
 ### Final checklist
 
 * reread instructions, make sure I follow all of them
-* record loom
 * run new env dockerfile
 * add unit tests
 * API -> Deploy GCP
-* 
+
+### First week's prices
+
+In case it helps you do QA more easily. The entire list
+is [here](https://github.com/EnriqueOrtiz27/fintual-application/blob/main/infrastructure/stock_prices.csv).
+
+![image](/images/first_week.png)

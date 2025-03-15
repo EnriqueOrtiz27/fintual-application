@@ -15,7 +15,7 @@ These are the original instructions:
 
 # How it Works
 
-(If you're impatient, check out the [10-second test](#10-second-launch).)
+(If you're impatient, check out the [10-second test](#10-second-test).)
 
 I decided to represent this problem with three main entities: `Portfolios`, `Allocations`, and `Stocks`.
 The following image illustrates my thought process:

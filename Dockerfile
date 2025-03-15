@@ -1,24 +1,17 @@
-FROM python:3.11.6-slim-bullseye as requirements-stage
-
-WORKDIR /tmp
-
-RUN pip install poetry
-RUN pip install poetry-plugin-export
-
-COPY ./pyproject.toml ./poetry.lock* /tmp/
-
-RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
 FROM python:3.11.6-slim-bullseye
 
-WORKDIR /app
 
-COPY --from=requirements-stage /tmp/requirements.txt /app/requirements.txt
+WORKDIR /code
 
-RUN apt-get update && apt-get -y install libpq-dev gcc git
 
-RUN pip install --no-cache-dir --upgrade -r /app/requirements.txt
+COPY ./requirements.txt /code/requirements.txt
 
-COPY . .
+
+RUN pip install --no-cache-dir --upgrade -r /code/requirements.txt
+
+COPY . /code
 
 EXPOSE 8080
+
+ENTRYPOINT ["uvicorn", "infrastructure.main:app", "--host" , "0.0.0.0", "--port", "8080"]

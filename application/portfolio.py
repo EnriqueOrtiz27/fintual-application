@@ -33,7 +33,7 @@ def format_profits(
         annualized_return = 0  # Avoid division errors for same-day calculations
 
     return ProfitsPresenter(
-        net_profit=profit_percentage, annualized_return=annualized_return
+        net_profit=profit_percentage, annualized_return_pct=annualized_return
     )
 
 
@@ -106,7 +106,7 @@ class Portfolio:
         )
         return ProfitsPresenter(
             net_profits=net_profits,
-            annualized_return=annualized_return,
+            annualized_return_pct=annualized_return,
             portfolio_start_value=round(start_value, 2),
             portfolio_end_value=round(end_value, 2),
         )

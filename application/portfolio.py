@@ -9,34 +9,6 @@ from domain.repositories import StockPriceAbstractRepository
 logger = logging.getLogger(__name__)
 
 
-def format_profits(
-    start_value: float, end_value: float, start_date: datetime, end_date: datetime
-) -> ProfitsPresenter:
-    """
-    Compute profit and annualized return given two portfolio values.
-    :param start_value: Portfolio value at start date
-    :param end_value: Portfolio value at end date
-    :param start_date: Start date of investment
-    :param end_date: End date of investment
-    :return: Profits object containing net profit and annualized return
-    """
-    profit_percentage = ((end_value - start_value) / start_value) * 100
-
-    # Compute annualized return
-    days_held = (end_date - start_date).days
-    years_held = days_held / 365.0  # Convert days to years
-
-    if years_held > 0:
-        annualized_return = ((end_value / start_value) ** (1 / years_held)) - 1
-        annualized_return *= 100  # Convert to percentage
-    else:
-        annualized_return = 0  # Avoid division errors for same-day calculations
-
-    return ProfitsPresenter(
-        net_profit=profit_percentage, annualized_return_pct=annualized_return
-    )
-
-
 class Portfolio:
     def __init__(
         self, portfolio: PortfolioEntity, stock_price_repo: StockPriceAbstractRepository
@@ -55,9 +27,6 @@ class Portfolio:
         self,
         date: datetime,
     ) -> float:
-        """
-        Get the total value of a portfolio on a given date.
-        """
         total_value = 0.0
         logger.info(f"Calculating portfolio value on {date.strftime('%Y-%m-%d')}")
 
@@ -79,13 +48,13 @@ class Portfolio:
         start_value: float,
         end_value: float,
     ):
+        # Investopedia: https://www.investopedia.com/terms/a/annualized-total-return.asp
         days_held = (end_date - start_date).days
         if days_held == 0:
             return 0
 
         total_return = (end_value - start_value) / start_value
-        years_held = days_held / 365
-        annualized_return = (1 + total_return) ** (1 / years_held) - 1
+        annualized_return = (1 + total_return) ** (365 / days_held) - 1
         annualized_return *= 100  # Convert to percentage
 
         return round(annualized_return, 2)

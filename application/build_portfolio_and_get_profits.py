@@ -1,3 +1,5 @@
+from datetime import datetime
+
 from application.params import ComputePortfolioProfitsParams
 from application.portfolio import Portfolio
 from application.presenters import ProfitsPresenter, PortfolioResultsPresenter
@@ -7,15 +9,22 @@ from domain.enums import RiskTolerance
 from infrastructure.repositories import StockPriceCSVRepository
 
 
+def get_dates(
+    params: ComputePortfolioProfitsParams,
+) -> tuple[datetime, datetime]:
+    start_date = params.start_date
+    end_date = params.end_date
+    if start_date > end_date:
+        # we can fix this for users, no need to get angry
+        start_date, end_date = params.end_date, params.start_date
+
+    return start_date, end_date
+
+
 class BuildPortfolioAndGetProfits:
     @staticmethod
     def call(params: ComputePortfolioProfitsParams) -> ProfitsPresenter:
-        start_date = params.start_date
-        end_date = params.end_date
-        if start_date > end_date:
-            # we can fix this for users, no need to get angry
-            start_date, end_date = params.end_date, params.start_date
-
+        start_date, end_date = get_dates(params=params)
         allocations = params.allocations
         portfolio_allocations = []
         for key, value in allocations.items():

@@ -27,7 +27,7 @@ endpoint that
 allows you to compute the profits of a portfolio comprised of a combination of two stocks, `AAPL` (Apple)
 and `FNTL` (Fintual). The following image illustrates how this works:
 
-![image](images/how_it_works.png)
+![image](images/how_it_works_two.png)
 
 ## How to test it
 

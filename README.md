@@ -94,7 +94,7 @@ to improve.
 
 * Who did better in 2025, Apple or Fintual? (assuming you go from `2025-01-01` to `2025-12-31`)
 * What happens if you send a `start_date` that's greater than the `end_date`?
-*
+* What are the net profits of a portfolio made up of 55% FNTL and 45% AAPL from `2025-03-04` to `2025-10-12`
 
 # Appendix
 

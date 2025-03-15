@@ -13,7 +13,9 @@ These are the original instructions:
 >
 > Bonus Track: make the Profit method return the "annualized return" of the portfolio between the given dates.
 
-## How it Works
+# How it Works
+
+(If you're impatient, check out the [10-second test](#10-second-launch).)
 
 I decided to represent this problem with three main entities: `Portfolios`, `Allocations`, and `Stocks`.
 The following image illustrates my thought process:
@@ -29,11 +31,33 @@ and `FNTL` (Fintual). The following image illustrates how this works:
 
 ![image](images/how_it_works.png)
 
-## How to test it
+# How to test it
 
-This repo assumes you have Docker installed.
+## 10-second test
 
-Download the repository and build the Docker image:
+Paste this curl in your terminal or favorite API testing tool and run it —I promise it's safe!
+
+```
+curl --location 'https://fintual-application-1034123727899.us-central1.run.app/portfolios/12345/profits' \
+--header 'Content-Type: application/json' \
+--data '{
+    "start_date": "2025-01-01",
+    "end_date": "2025-12-31",
+    "allocations": {
+        "FNTL": 50,
+        "AAPL": 50
+    }
+}'
+```
+
+Then, experiment with different portfolio allocations and dates. This example assumes a 50-50 split between FNTL and
+AAPL.
+See if you can solve
+the [challenges](#challenges) I created.
+
+## Run the project locally
+
+Download the repository and build the Docker image
 
 ```
 docker build -t fintual-app .  
@@ -73,7 +97,8 @@ The body of your request must fulfill the following criteria:
 * `allocations` is an object that must fulfill the following criteria:
     * It must have at least one element
     * The keys must be either `AAPL` or `FNTL`
-    * The weights must be integers (so that you can do QA more easily)
+    * The weights must be integers (so that you can do QA more easily). For example, `40` would mean 40% of the
+      portfolio.
     * The weights must add to `100`
 
 ### Stock Prices
@@ -122,8 +147,13 @@ is [here](https://github.com/EnriqueOrtiz27/fintual-application/blob/main/infras
 
 ### Further Improvements
 
-* Define behavior for negative weights (they're allowed now, which perhaps simulates short positions, but I did not do
+* Define expected behavior for negative weights (they're allowed now, which perhaps simulates short positions, but I did
+  not do
   QA on this.)
+    * Apparently you can get a 2,955,642.71% annualized return if you set an allocation of `-100` on `AAPL` and of `200`
+      on `FNTL`
+      between `2025-12-12` and `2025-12-14`. It's like one of those Reddit's r/wallstreetbets stories. Didn't check the
+      math.
 
 ### Answers to the challenges
 

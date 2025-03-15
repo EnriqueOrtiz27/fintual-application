@@ -1,11 +1,11 @@
 from datetime import datetime
 
-from domain.business_entities import Profits
+from domain.business_entities import ProfitsPresenter
 
 
 def compute_profits(
     start_value: float, end_value: float, start_date: datetime, end_date: datetime
-) -> Profits:
+) -> ProfitsPresenter:
     """
     Compute profit and annualized return given two portfolio values.
     :param start_value: Portfolio value at start date
@@ -26,4 +26,6 @@ def compute_profits(
     else:
         annualized_return = 0  # Avoid division errors for same-day calculations
 
-    return Profits(net_profit=profit_percentage, annualized_return=annualized_return)
+    return ProfitsPresenter(
+        net_profit=profit_percentage, annualized_return=annualized_return
+    )

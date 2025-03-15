@@ -2,31 +2,28 @@ from pydantic import BaseModel
 
 from domain.enums import (
     TickerSymbolCode,
-    StockExchangeCode,
     RiskToleranceLevel,
 )
 
 
-class StockModel(BaseModel):
+class StockEntity(BaseModel):
     symbol: TickerSymbolCode
-    exchange: StockExchangeCode
     official_name: str
     display_name: str
 
 
-class AllocationModel(BaseModel):
-    stock: StockModel
-    percentage_allocation: float
+class AllocationEntity(BaseModel):
+    stock: StockEntity
+    weight: float
 
 
-class PortfolioModel(BaseModel):
+class PortfolioEntity(BaseModel):
     description: str
     risk_tolerance: RiskToleranceLevel
-    expense_ratio_pct: float
-    stock_allocations: list[AllocationModel]
+    allocations: list[AllocationEntity]
 
 
-class Profits(BaseModel):
+class ProfitsPresenter(BaseModel):
     net_profit: float
     annualized_return: float
 

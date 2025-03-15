@@ -3,19 +3,18 @@ from datetime import datetime
 
 from app.profit import compute_profits
 from app.stock import Stock
-from domain.business_entities import PortfolioModel, Profits
+from domain.business_entities import PortfolioEntity, ProfitsPresenter
 
 logger = logging.getLogger(__name__)
 
 
 class Portfolio:
-    def __init__(self, portfolio: PortfolioModel):
+    def __init__(self, portfolio: PortfolioEntity):
         self.description = portfolio.description
         self.risk_tolerance = portfolio.risk_tolerance
-        self.expense_ratio_pct = portfolio.expense_ratio_pct
-        self.stock_allocations = [
-            (Stock(allocation.stock), allocation.percentage_allocation)
-            for allocation in portfolio.stock_allocations
+        self.allocations = [
+            (Stock(allocation.stock), allocation.weight)
+            for allocation in portfolio.allocations
         ]
 
     def compute_portfolio_value_at_date(
@@ -31,7 +30,7 @@ class Portfolio:
         total_value = 0.0
         logger.info(f"Calculating portfolio value on {date.strftime('%Y-%m-%d')}")
 
-        for stock, allocation in self.stock_allocations:
+        for stock, allocation in self.allocations:
             stock_price = stock.price(date=date, randomize=randomize)
             stock_value = (allocation / 100) * stock_price
             total_value += stock_value
@@ -42,7 +41,7 @@ class Portfolio:
         logger.info(f"Portfolio value on {date.strftime('%Y-%m-%d')}: {total_value}")
         return total_value
 
-    def profit(self, start_date: datetime, end_date: datetime) -> Profits:
+    def profit(self, start_date: datetime, end_date: datetime) -> ProfitsPresenter:
         """
         Calculate the profit of the portfolio from start_date to end_date.
         """

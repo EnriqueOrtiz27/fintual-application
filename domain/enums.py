@@ -4,20 +4,10 @@ from enum import Enum, unique
 @unique
 class TickerSymbolCode(Enum):
     # NYSE
-    ABNB = "ABNB"  # AIRBNB INC
-    ACGL = "ACGL"  # ARCH CAPITAL GROUP
-    ADBE = "ADBE"  # ADOBE INC
+    FNTL = "FNTL"  # Fintual, #Believe
 
     # Nasdaq
     AAPL = "AAPL"  # Apple Inc. Common Stock
-    NVDA = "NVDA"  # NVIDIA Corporation Common Stock
-    AMZN = "AMZN"  # Amazon.com, Inc. Common Stock
-
-
-@unique
-class StockExchangeCode(Enum):
-    NYSE = "NYSE"
-    Nasdaq = "Nasdaq"
 
 
 @unique

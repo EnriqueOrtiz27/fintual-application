@@ -80,13 +80,13 @@ class Portfolio:
         end_value: float,
     ):
         days_held = (end_date - start_date).days
-        years_held = days_held / 365.0  # Convert days to years
+        if days_held == 0:
+            return 0
 
-        if years_held > 0:
-            annualized_return = ((end_value / start_value) ** (1 / years_held)) - 1
-            annualized_return *= 100  # Convert to percentage
-        else:
-            annualized_return = 0  # Avoid division errors for same-day calculations
+        total_return = (end_value - start_value) / start_value
+        years_held = days_held / 365
+        annualized_return = (1 + total_return) ** (1 / years_held) - 1
+        annualized_return *= 100  # Convert to percentage
 
         return round(annualized_return, 2)
 

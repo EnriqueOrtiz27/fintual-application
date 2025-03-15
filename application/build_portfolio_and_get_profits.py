@@ -3,7 +3,7 @@ from application.portfolio import Portfolio
 from application.presenters import ProfitsPresenter, PortfolioResultsPresenter
 from application.stock import build_stock_entity
 from domain.entities import AllocationEntity, PortfolioEntity
-from domain.enums import RiskToleranceLevel
+from domain.enums import RiskTolerance
 from infrastructure.repositories import StockPriceCSVRepository
 
 
@@ -20,7 +20,7 @@ class BuildPortfolioAndGetProfits:
             portfolio=PortfolioEntity(
                 description="Fintual Demo",
                 allocations=portfolio_allocations,
-                risk_tolerance=RiskToleranceLevel.low,
+                risk_tolerance=RiskTolerance.low,
             ),
             stock_price_repo=StockPriceCSVRepository(
                 csv_path="infrastructure/stock_prices.csv"

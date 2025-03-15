@@ -7,7 +7,7 @@ from datetime import datetime
 
 from application.portfolio import Portfolio
 from domain.entities import StockEntity, AllocationEntity, PortfolioEntity
-from domain.enums import Ticker, RiskToleranceLevel
+from domain.enums import Ticker, RiskTolerance
 from infrastructure.repositories import StockPriceCSVRepository
 
 logging.basicConfig(level=logging.INFO)
@@ -32,7 +32,7 @@ allocations = [
 
 portfolio = PortfolioEntity(
     description="Tech Growth Portfolio",
-    risk_tolerance=RiskToleranceLevel.high,
+    risk_tolerance=RiskTolerance.high,
     allocations=allocations,
 )
 

@@ -39,7 +39,7 @@ class Stock:
     def __repr__(self):
         return f"{self.ticker.value} - ({self.display_name})"
 
-    def price(self, date: datetime) -> int:
+    def price(self, date: datetime) -> float:
         logger.info(f"Getting price for {self.ticker} on {date}")
         stock_price = self.repo.price(date=date, ticker=self.ticker.value)
         logger.info(

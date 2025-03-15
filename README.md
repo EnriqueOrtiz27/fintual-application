@@ -23,6 +23,8 @@ I built a simple API with a single endpoint that allows you to compute the profi
 of a portfolio comprised of a combination of these two stocks (for example, 70% AAPL and 30% FNTL)
 between Jan 1st, 2025, and Dec 31st, 2025.
 
+## Stock Prices
+
 Prices are read from a csv called `stock_prices.csv`. They're simulated, but they look kind of real.
 
 The csv can be

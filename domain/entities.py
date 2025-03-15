@@ -2,7 +2,7 @@ from pydantic import BaseModel
 
 from domain.enums import (
     Ticker,
-    RiskToleranceLevel,
+    RiskTolerance,
 )
 
 
@@ -19,5 +19,5 @@ class AllocationEntity(BaseModel):
 
 class PortfolioEntity(BaseModel):
     description: str
-    risk_tolerance: RiskToleranceLevel
+    risk_tolerance: RiskTolerance
     allocations: list[AllocationEntity]

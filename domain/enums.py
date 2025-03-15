@@ -8,7 +8,7 @@ class Ticker(Enum):
 
 
 @unique
-class RiskToleranceLevel(Enum):
+class RiskTolerance(Enum):
     low = "low"
     moderate = "moderate"
     high = "high"

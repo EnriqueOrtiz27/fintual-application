@@ -2,11 +2,8 @@ from enum import Enum, unique
 
 
 @unique
-class TickerSymbolCode(Enum):
-    # NYSE
+class Ticker(Enum):
     FNTL = "FNTL"  # Fintual, #Believe
-
-    # Nasdaq
     AAPL = "AAPL"  # Apple Inc. Common Stock
 
 

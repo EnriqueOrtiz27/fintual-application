@@ -5,50 +5,50 @@ This script is meant to help you understand this project.
 import logging
 from datetime import datetime
 
-from app.portfolio import Portfolio
-from domain.business_entities import StockEntity, AllocationEntity, PortfolioEntity
-from domain.enums import TickerSymbolCode, RiskToleranceLevel
+from application.portfolio import Portfolio
+from domain.entities import StockEntity, AllocationEntity, PortfolioEntity
+from domain.enums import Ticker, RiskToleranceLevel
+from infrastructure.repositories import StockPriceCSVRepository
 
-# Configure logging
 logging.basicConfig(level=logging.INFO)
 
-# Create sample stocks
 apple = StockEntity(
-    symbol=TickerSymbolCode.AAPL,
+    ticker=Ticker.AAPL,
     official_name="Apple Inc.",
     display_name="Apple",
 )
 
 fintual = StockEntity(
-    symbol=TickerSymbolCode.FNTL,
+    ticker=Ticker.FNTL,
     official_name="Fintual Corporation",
     display_name="Fintual",
 )
 
 
-# Define allocations (must sum to 100%)
 allocations = [
-    AllocationEntity(stock=apple, weight=50),
-    AllocationEntity(stock=fintual, weight=50),
+    AllocationEntity(stock=apple, weight=100),
+    AllocationEntity(stock=fintual, weight=0),
 ]
 
-# Create portfolio
-portfolio_model = PortfolioEntity(
+portfolio = PortfolioEntity(
     description="Tech Growth Portfolio",
     risk_tolerance=RiskToleranceLevel.high,
     allocations=allocations,
 )
 
-# Initialize portfolio
-portfolio = Portfolio(portfolio_model)
+portfolio = Portfolio(
+    portfolio=portfolio,
+    stock_price_repo=StockPriceCSVRepository(
+        csv_path="infrastructure/stock_prices.csv"
+    ),
+)
 
-# Define dates
-start_date = datetime(2024, 1, 1)
-end_date = datetime(2025, 1, 1)
+start_date = datetime(2025, 1, 1)
+end_date = datetime(2025, 3, 1)
 
 # Compute portfolio values and profit
 start_value = portfolio.compute_portfolio_value_at_date(start_date)
-end_value = portfolio.compute_portfolio_value_at_date(end_date, randomize=True)
+end_value = portfolio.compute_portfolio_value_at_date(end_date)
 profit = portfolio.profit(start_date, end_date)
 
 # Display results

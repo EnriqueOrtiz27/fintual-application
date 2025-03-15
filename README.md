@@ -1,6 +1,6 @@
 # Introduction
 
-This is a repository that forms part of my application to
+This is part of my application to
 the [Sr. Backend Engineer role](https://jobs.lever.co/fintual/26c5379b-4dbc-4ed9-a58e-a1bed26869b0)
 at [Fintual](https://fintual.mx/).
 
@@ -62,7 +62,7 @@ curl --location 'http://0.0.0.0:8080/portfolios/12345/profits' \
 ```
 
 In the example above, I'm computing the profits of a portfolio made up of 50% Fintual stock and 50%
-Apple stock between January 1st, 2025 and December 31st, 2025.
+Apple stock during 2025.
 
 ### JSON Body Guidelines
 
@@ -78,15 +78,23 @@ The body of your request must fulfill the following criteria:
 
 ### Stock Prices
 
-Prices are read from a csv called `stock_prices.csv`. They're simulated, but they look kind of real.
-
-The csv can be
+Prices are read from a csv called `stock_prices.csv`. They're simulated, but they look kind of real. The csv can be
 found [here](https://github.com/EnriqueOrtiz27/fintual-application/blob/main/infrastructure/stock_prices.csv).
 
 This is a graph that represents the csv prices:
 
 ![image](images/stock_prices.png)
-_As you can see, Apple is still more valuable than Fintual, but Fintual is doing great._
+_As you can see, Apple is still more valuable than Fintual, but Fintual is doing great!_
+
+# Challenges
+
+This is a test of well I did my job. If it's not clear at all how to solve these questions in less than 10 minutes, I
+need
+to improve.
+
+* Who did better in 2025, Apple or Fintual? (assuming you go from `2025-01-01` to `2025-12-31`)
+* What happens if you send a `start_date` that's greater than the `end_date`?
+*
 
 # Appendix
 
@@ -109,3 +117,7 @@ is [here](https://github.com/EnriqueOrtiz27/fintual-application/blob/main/infras
 | 2025-01-05 | 68.22 | 199.50 |
 | 2025-01-06 | 69.70 | 199.10 |
 | 2025-01-07 | 67.54 | 197.65 |
+
+## Further Improvements
+
+* Define behavior for negative weights (they're allowed now)

@@ -23,9 +23,9 @@ def date_validator(date: datetime) -> datetime:
             return date
     except Exception as e:
         print(f"Error comparing dates: {e}")
-        raise ValueError("Dates must be between 2025-03-01, and 2025-12-31, inclusive")
+        raise ValueError("Dates must be between 2025-01-01, and 2025-12-31, inclusive")
 
-    raise ValueError("Dates must be between 2025-03-01, and 2025-12-31, inclusive")
+    raise ValueError("Dates must be between 2025-01-01, and 2025-12-31, inclusive")
 
 
 class ComputePortfolioProfitsParams(BaseModel):

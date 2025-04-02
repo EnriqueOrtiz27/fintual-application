@@ -8,7 +8,7 @@ from domain.enums import Ticker
 
 def allocation_validator(allocations: dict) -> dict:
     if not allocations:
-        raise ValueError("Cannot set an empty portfolio")
+        raise ValueError("Cannot create empty portfolio")
 
     weight_sum = sum(allocations.values())
     if weight_sum != 100:
@@ -23,13 +23,12 @@ def date_validator(date: datetime) -> datetime:
             return date
     except Exception as e:
         print(f"Error comparing dates: {e}")
-        raise ValueError("Dates must be between 2025-01-01, and 2025-12-31, inclusive")
+        raise ValueError("Dates must be between 2025-01-01 and 2025-12-31, inclusive")
 
-    raise ValueError("Dates must be between 2025-01-01, and 2025-12-31, inclusive")
+    raise ValueError("Dates must be between 2025-01-01 and 2025-12-31, inclusive")
 
 
 class ComputePortfolioProfitsParams(BaseModel):
-    portfolio_id: str
     start_date: Annotated[datetime, AfterValidator(date_validator)]
     end_date: Annotated[datetime, AfterValidator(date_validator)]
     allocations: Annotated[dict[Ticker, int], AfterValidator(allocation_validator)]

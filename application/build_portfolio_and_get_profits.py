@@ -23,7 +23,9 @@ def get_dates(
 
 class BuildPortfolioAndGetProfits:
     @staticmethod
-    def call(params: ComputePortfolioProfitsParams) -> ProfitsPresenter:
+    def call(
+        params: ComputePortfolioProfitsParams, portfolio_id: str
+    ) -> ProfitsPresenter:
         start_date, end_date = get_dates(params=params)
         allocations = params.allocations
         portfolio_allocations = []
@@ -45,7 +47,7 @@ class BuildPortfolioAndGetProfits:
         portfolio_profits = portfolio.profit(start_date=start_date, end_date=end_date)
 
         return PortfolioResultsPresenter(
-            portfolio_id=params.portfolio_id,
+            portfolio_id=portfolio_id,
             start_date=start_date.strftime("%Y-%m-%d"),
             end_date=end_date.strftime("%Y-%m-%d"),
             allocations=[
